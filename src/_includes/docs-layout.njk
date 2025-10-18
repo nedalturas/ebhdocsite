@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title or "Documentation" }}</title>
+
+  {% extends "base.njk" %}
+
+  {% block styles %}
+  <link rel="stylesheet" href="/css/docs.css">
+  {% endblock %}
+
+</head>
+
+<body>
+  {% block content %}
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Documentation</h2>
+      <nav>
+        {% for category, docs in collections.docsByCategory %}
+        <div class="category">
+          <button class="category-toggle">
+            {{ category | replace("-", " ") | title }}
+            <span class="arrow">▼</span>
+          </button>
+          <ul class="category-links">
+            {% for doc in docs %}
+            <li>
+              <a href="{{ doc.url }}">{{ doc.data.title or doc.fileSlug }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </nav>
+    </aside>
+    <main class="content">
+      {{ content | safe }}
+    </main>
+  </div>
+  <script src="/js/sidebar.js" type="text/javascript" ></script>
+
+  {% endblock %}
+</body>
+
+</html>
