@@ -1,0 +1,29 @@
+<head>
+
+    <style>
+
+    nav{
+        display: flex;
+        width: 100%;
+    }
+
+    </style>
+</head>
+
+<nav class="container-fluid">
+    <ul>
+        <li><strong>
+
+            <a href="/" class="nav-logo">{{ site.name or "My Site" }}</a>
+        </strong></li>
+    </ul>
+
+    <ul class="">
+      <li class="">
+        <a href="/" class="{% if page.url == '/' %}active{% endif %}">Home</a>
+      </li>
+      <li class="">
+        <a href="/docs/" class=" {% if '/docs/' in page.url %}active{% endif %}">Docs</a>
+      </li>
+    </ul>
+</nav>

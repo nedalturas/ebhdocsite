@@ -1,21 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
-  
+
   <!-- Shared CSS libraries -->
   
   
-  
+  <link rel="stylesheet" href="/css/pico.min.css"
+  <link rel="stylesheet" href="/css/pico.blue.min.css"
+
   <!-- Page-specific CSS -->
   
   <link rel="stylesheet" href="/css/home.css">
   
 </head>
 <body>
-  
+
+    <head>
+
+    <style>
+
+    nav{
+        display: flex;
+        width: 100%;
+    }
+
+    </style>
+</head>
+
+<nav class="container-fluid">
+    <ul>
+        <li><strong>
+
+            <a href="/" class="nav-logo">My Site</a>
+        </strong></li>
+    </ul>
+
+    <ul class="">
+      <li class="">
+        <a href="/" class="active">Home</a>
+      </li>
+      <li class="">
+        <a href="/docs/" class=" ">Docs</a>
+      </li>
+    </ul>
+</nav>
+
+    
         
 <div class="hero">
   <h1>Welcome to My Project</h1>
@@ -25,5 +58,6 @@
   <a href="/docs/" class="cta-button">View Documentation</a>
 </div>
     
+
 </body>
 </html>
