@@ -7,6 +7,10 @@
         width: 100%;
     }
 
+    .active{
+
+    }
+
     </style>
 </head>
 
@@ -19,11 +23,12 @@
     </ul>
 
     <ul class="">
-      <li class="">
-        <a href="/" class="{% if page.url == '/' %}active{% endif %}">Home</a>
+
+        {% for item in navigation.items %}
+        <li class="">
+        <a href="{{ item.url }}" class="{% if page.url == '/' %}active{% endif %}">{{ item.text }}</a>
       </li>
-      <li class="">
-        <a href="/docs/" class=" {% if '/docs/' in page.url %}active{% endif %}">Docs</a>
-      </li>
+      {% endfor %}
     </ul>
+
 </nav>
