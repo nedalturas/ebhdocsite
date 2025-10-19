@@ -16,15 +16,14 @@
 
 <body>
   {% block content %}
-  <div class="parent">
+  <div class="parent container">
     <aside class="sidebar">
-      <h2>Documentation</h2>
+      <h4>Documentation</h4>
       <nav>
         {% for category, docs in collections.docsByCategory %}
         <div class="category">
           <button class="category-toggle outline">
             {{ category | replace("-", " ") | title }}
-            {# <span class="arrow"></span> #}
           </button>
           <ul class="category-links">
             {% for doc in docs %}
@@ -37,7 +36,7 @@
         {% endfor %}
       </nav>
     </aside>
-    <main class="content">
+    <main class="content container">
       {{ content | safe }}
     </main>
   </div>
