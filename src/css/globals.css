@@ -10,3 +10,9 @@ body {
         -apple-system,
         sans-serif;
 }
+
+:root {
+    --pico-border-radius: 0;
+    --pico-form-element-spacing-vertical: 0.5rem;
+    --pico-form-element-spacing-horizontal: 1rem;
+}

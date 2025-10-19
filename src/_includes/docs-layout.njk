@@ -16,15 +16,15 @@
 
 <body>
   {% block content %}
-  <div class="container">
+  <div class="parent">
     <aside class="sidebar">
       <h2>Documentation</h2>
       <nav>
         {% for category, docs in collections.docsByCategory %}
         <div class="category">
-          <button class="category-toggle">
+          <button class="category-toggle outline">
             {{ category | replace("-", " ") | title }}
-            <span class="arrow">▼</span>
+            {# <span class="arrow"></span> #}
           </button>
           <ul class="category-links">
             {% for doc in docs %}
