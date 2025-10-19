@@ -20,24 +20,14 @@
     <head>
 
     <style>
-
-    @import url(css/pico.min.css);
-    @import url(css/globals.css);
-
-
-    .nav-container{
-        width: 100%;
-        background-color: var(--pico-background-color);
-        border-bottom: 1px solid lightgrey;
-        top: 0;
-        position: sticky;
-
-        z-index: 100;
-    }
-
-
-
-
+        .nav-container {
+            width: 100%;
+            background-color: var(--pico-background-color);
+            border-bottom: 1px solid lightgrey;
+            top: 0;
+            position: sticky;
+            z-index: 100;
+        }
     </style>
 </head>
 
@@ -51,24 +41,28 @@
                 </strong>
             </li>
         </ul>
-    
+
         <ul class="">
-    
+
             
             <li class="">
-            <a href="/" class="">Home</a>
-          </li>
-          
+                <a href="/" class="">Home</a>
+            </li>
+            
             <li class="">
-            <a href="/docs/" class="">Docs</a>
-          </li>
-          
+                <a href="/docs/" class="">Docs</a>
+            </li>
+            
+
+            <li class="">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </li>
         </ul>
-    
+
     </nav>
 </div>
-
-
     
   <div class="parent container">
     <aside class="sidebar">
@@ -120,6 +114,8 @@
   <script src="/js/sidebar.js" type="text/javascript" ></script>
 
   
+
+    <script src="/js/themeSwitch.js"></script>
 
 
 
