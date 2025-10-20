@@ -31,9 +31,26 @@
             display: flex;
             align-items: center;
         }
+
+        .menu{
+            display: none;
+            cursor: pointer;
+        }
+
+@media (max-width: 960px) {
+  body{
+      background-color: aquamarine;
+  }
+
+  .menu{
+            display: block;
+        }
+  
+}
     </style>
 
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/expand.min.css">
+
 </head>
 
 <div class="nav-container">
@@ -45,7 +62,11 @@
                     <a href="/" class="nav-logo">EBH Doc</a>
                 </strong>
             </li>
+            <li>
+                <div class="menu" id="menu">Menu</div>
+            </li>
         </ul>
+
 
         <ul class="">
 
@@ -60,10 +81,12 @@
             
 
             <li class="">
-                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <div id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
                     <span class="theme-icon">🌙</span>
-                </button>
+                </div>
             </li>
+            
+            
         </ul>
 
     </nav>

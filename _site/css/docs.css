@@ -95,4 +95,18 @@
   .content h1 {
     margin-bottom: 1rem;
   }
+
+
+@media (max-width: 960px) {
+  body{
+      background-color: aquamarine;
+  }
+  .sidebar{
+    display: none;
+  }
+
+  .content{
+    padding: 0;
+  }
+}
 }
