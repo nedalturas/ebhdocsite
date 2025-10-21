@@ -92,7 +92,37 @@
 
   @media (max-width: 960px) {
     .sidebar {
-      display: none;
+      position: fixed;
+      left: -100%;
+      top: 80px;
+      width: 100%;
+      height: calc(100vh - 80px);
+      background-color: var(--pico-background-color);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar h4 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .sidebar .category-toggle {
+      font-size: 1.1rem;
+      padding: 1rem 0.75rem;
+    }
+
+    .sidebar .category-links {
+      font-size: 1rem;
+    }
+
+    .sidebar .category-links a {
+      padding: 0.75rem 1.5rem;
     }
 
     .content {
