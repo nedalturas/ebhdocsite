@@ -32,18 +32,63 @@
             align-items: center;
         }
 
-        .menu{
+        .menu {
             display: none;
             cursor: pointer;
+            width: 25px;
+            height: 24px;
+            position: relative;
+            background: transparent;
+            border: none;
         }
 
-@media (max-width: 960px) {
-
-  .menu{
+        .menu span {
             display: block;
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            background: var(--pico-muted-color);
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            /* transition: 0.25s ease-in-out; */
         }
-  
-}
+
+        .menu span:nth-child(1) {
+            top: 0px;
+        }
+
+        .menu span:nth-child(2) {
+            top: 10px;
+        }
+
+        .menu span:nth-child(3) {
+            top: 20px;
+        }
+
+        .menu.open span:nth-child(1) {
+            top: 10px;
+            transform: rotate(135deg);
+        }
+
+        .menu.open span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+
+        .menu.open span:nth-child(3) {
+            top: 10px;
+            transform: rotate(-135deg);
+        }
+
+        @media (max-width: 960px) {
+
+            .menu {
+                display: block;
+            }
+
+        }
     </style>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/expand.min.css">
@@ -55,13 +100,18 @@
     <nav class="container">
         <ul>
             <li>
+                <div class="menu" id="menu" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </li>
+            <li>
                 <strong>
                     <a href="/" class="nav-logo">EBH Doc</a>
                 </strong>
             </li>
-            <li>
-                <div class="menu" id="menu">Menu</div>
-            </li>
+           
         </ul>
 
 

@@ -99,7 +99,7 @@
       height: calc(100vh - 80px);
       background-color: var(--pico-background-color);
       z-index: 1000;
-      transition: left 0.3s ease;
+      /* transition: left 0.3s ease; */
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     }
 
@@ -109,7 +109,6 @@
 
     .sidebar h4 {
       font-size: 1.5rem;
-      text-align: center;
     }
 
     .sidebar .category-toggle {
