@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuButton && sidebar) {
     menuButton.addEventListener('click', () => {
       sidebar.classList.toggle('open');
+      menuButton.classList.toggle('open');
     });
   }
 
