@@ -4,6 +4,7 @@
 
     .menu {
         display: none;
+        clear: left;
     }
 
 }
