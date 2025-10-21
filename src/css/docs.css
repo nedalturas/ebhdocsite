@@ -55,6 +55,9 @@
       color: var(--pico-color);
       display: block;
       padding-left: 1.5em;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+
     }
 
     .category-links li:hover {
@@ -63,6 +66,7 @@
 
     .category-links a.active {
       font-weight: bold;
+      background-color: var( --pico-primary-hover-background);
     }
 
     .category-links li:active {
