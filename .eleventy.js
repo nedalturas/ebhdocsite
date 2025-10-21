@@ -20,7 +20,7 @@ module.exports = function(eleventyConfig) {
     
     // Sort docs within each category
     Object.keys(categories).forEach(cat => {
-      categories[cat].sort((a, b) => a.fileSlug.localeCompare(b.fileSlug));
+      categories[cat].sort((b, a) => a.fileSlug.localeCompare(b.fileSlug));
     });
     
     return categories;
