@@ -80,11 +80,15 @@
 
     <nav class="container">
         <ul>
+
+
+              {% if page.url.startsWith('/docs/') %}
                 <div class="menu" id="menu" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
+              {% endif %}
             <li>
                 <strong>
                     <a href="/" class="nav-logo">{{ site.name or "My Site" }}</a>
