@@ -208,8 +208,18 @@ Welcome to the documentation. Select a category from the sidebar to get started.
 
     <script src="/js/themeSwitch.js"></script>
 
-
-
-
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <script>
+    if(window.netlifyIdentity){
+      window.netlifyIdentity.on("init", user => {
+        if(!user){
+          window.netlifyIdentity.on("login", ()=>{
+            document.location.href = '/admin/'
+          });
+        }
+      });
+    }
+    </script>
 </body>
 </html>
