@@ -10,18 +10,19 @@
     width: 250px;
     border-right: 1px solid var(--pico-muted-border-color);
     overflow-x: auto;
-    padding: 20px;
+    /* padding: 20px; */
 
     .category-toggle {
       width: 100%;
-      padding-left: 0.75rem;
+      /* padding-left: 0.75rem; */
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       transition: background 0.2s;
       font-size: 0.9rem;
-      margin-bottom: 0.5rem;
+      /* margin-bottom: 0.5rem; */
+      margin: .5rem 0 .5rem 0;
     }
 
     .category-toggle::after {
@@ -35,14 +36,17 @@
     }
 
     .category-links {
+      line-height: 1rem;
       list-style: none;
       max-height: 0;
       overflow: hidden;
       font-size: 0.75rem;
+      border-bottom: 2px solid var(--pico-muted-border-color);
     }
 
     .category.open .category-links {
       max-height: 500px;
+      border-bottom: none;
     }
 
     .category-links li {
