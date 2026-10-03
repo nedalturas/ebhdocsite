@@ -10,6 +10,10 @@
     width: 250px;
     border-right: 1px solid var(--pico-muted-border-color);
     overflow-x: auto;
+
+    /* TODO
+     * Fix sidebar overflow
+    */
     /* padding: 20px; */
 
     .category-toggle {
