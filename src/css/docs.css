@@ -31,6 +31,7 @@
 
     .category-toggle::after {
       content: var(--pico-icon-chevron);
+      margin-right: 3em;
       opacity: 0;
       transition: opacity 200ms ease;
     }
