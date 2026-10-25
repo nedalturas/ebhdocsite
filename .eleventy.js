@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/images");
@@ -8,10 +10,10 @@ module.exports = function (eleventyConfig) {
     const categories = {};
 
     docs.forEach(doc => {
-      // Get the category from the path
-      const parts = doc.inputPath.split('/');
-      const docsIndex = parts.indexOf('docs');
-      const category = parts[docsIndex + 1]; // Folder name after 'docs'
+      // Normalize path across all operating systems
+      const segments = path.normalize(doc.inputPath).split(path.sep);
+      const docsIndex = segments.indexOf("docs");
+      const category = docsIndex !== -1 ? segments[docsIndex + 1] : "general";
 
       if (!categories[category]) {
         categories[category] = [];
@@ -19,20 +21,24 @@ module.exports = function (eleventyConfig) {
       categories[category].push(doc);
     });
 
-    // Sort docs within each category
+    // Sort documents alphabetically by title/slug within each category
     Object.keys(categories).forEach(cat => {
-      categories[cat].sort((b, a) => a.fileSlug.localeCompare(b.fileSlug));
+      categories[cat].sort((a, b) => {
+        const titleA = a.data.title || a.fileSlug;
+        const titleB = b.data.title || b.fileSlug;
+        return titleA.localeCompare(titleB);
+      });
     });
 
     return categories;
   });
 
-  eleventyConfig.addPairedShortcode("infoCard", function (content, type, title) {
+  eleventyConfig.addPairedShortcode("infoCard", function (content, type = "info", title = "Information") {
     return `<div class="info-card info-card--${type}">
     <strong class="info-card__title">${title}</strong>
-    <p class="info-card__content">${content}</p>
+    <div class="info-card__content">${content}</div>
   </div>`;
-  })
+  });
 
   return {
     dir: {

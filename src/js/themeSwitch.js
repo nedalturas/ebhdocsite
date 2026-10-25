@@ -1,18 +1,28 @@
+(() => {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
 
-const toggle = document.getElementById('theme-toggle');
-const icon = toggle.querySelector('.theme-icon');
-const html = document.documentElement;
+  const icon = toggle.querySelector('.theme-icon');
+  const html = document.documentElement;
 
-// Check saved theme or default to light
-const currentTheme = localStorage.getItem('theme') || 'light';
-html.setAttribute('data-theme', currentTheme);
-icon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+  // Retrieve saved preference or check OS color scheme preference
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
 
-toggle.addEventListener('click', () => {
-  const theme = html.getAttribute('data-theme');
-  const newTheme = theme === 'light' ? 'dark' : 'light';
-  
-  html.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  icon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-});
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    if (icon) {
+      icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+  }
+
+  applyTheme(initialTheme);
+
+  toggle.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-theme') || 'light';
+    const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+    applyTheme(nextTheme);
+    localStorage.setItem('theme', nextTheme);
+  });
+})();
