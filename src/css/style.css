@@ -6,12 +6,7 @@
 
 body {
   font-family: system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-}
-
-.container {
-  display: flex;
-  min-height: 100vh;
+  /* line-height: 1.6; */
 }
 
 .sidebar {

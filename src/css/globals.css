@@ -12,13 +12,6 @@ body {
 
 }
 
-:root {
-    --pico-border-radius: 0;
-    --pico-form-element-spacing-vertical: 0.5rem;
-    --pico-form-element-spacing-horizontal: 1rem;
-    --pico-form-element-active-border-color: none;
-}
-
 h1,
 h2,
 h3,
@@ -28,8 +21,4 @@ h6,
 p {
     margin: 0;
     padding: 0;
-}
-
-
-@media (max-width: 960px) {
 }
