@@ -1,100 +1,42 @@
 <head>
 
     <style>
-        .nav-container {
-            width: 100%;
-            background-color: var(--pico-background-color);
-            border-bottom: 1px solid var(--pico-muted-border-color);
-            top: 0;
-            position: sticky;
-            z-index: 100;
-            height: 80px;
-            display: flex;
-            align-items: center;
-        }
-
-        .menu {
-            display: none;
-            cursor: pointer;
-            width: 25px;
-            height: 24px;
-            position: relative;
-            background: transparent;
-            border: none;
-        }
-
-        .menu span {
-            display: block;
-            position: absolute;
-            height: 1px;
-            width: 100%;
-            background: var(--pico-muted-color);
-            border-radius: 3px;
-            opacity: 1;
-            left: 0;
-            transform: rotate(0deg);
-            /* transition: 0.25s ease-in-out; */
-        }
-
-        .menu span:nth-child(1) {
-            top: 0px;
-        }
-
-        .menu span:nth-child(2) {
-            top: 10px;
-        }
-
-        .menu span:nth-child(3) {
-            top: 20px;
-        }
-
-        .menu.open span:nth-child(1) {
-            top: 10px;
-            transform: rotate(135deg);
-        }
-
-        .menu.open span:nth-child(2) {
-            opacity: 0;
-            left: -60px;
-        }
-
-        .menu.open span:nth-child(3) {
-            top: 10px;
-            transform: rotate(-135deg);
-        }
-
-        @media (max-width: 960px) {
-
-            .menu {
-                display: block;
-            }
-
-        }
     </style>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/expand.min.css">
 
 </head>
 
-<div class="nav-container">
+{# <div class="nav-container">
 
-    <nav class="container">
+    <nav class="navbar md:navbar-expand bg-1">
+        <div class="container-fluid">
+            <a href="/" class="navbar-brand">
+                {{ site.name or "My Site" }}
+            </a>
+
+            <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer data-bs-target=" #navbarDrawer"
+                aria-controls="navbarDrawer" aria-expand="false" aria-lable="Toggle navigation">
+                <span class="navbar-toggler-icon" aria-hidden="true"></span>
+
+            </button>
+
+        </div>
         <ul>
 
 
-              {% if page.url.startsWith('/docs/') %}
-                <div class="menu" id="menu" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-              {% endif %}
+            {% if page.url.startsWith('/docs/') %}
+            <div class="menu" id="menu" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            {% endif %}
             <li>
                 <strong>
-                    <a href="/" class="nav-logo">{{ site.name or "My Site" }}</a>
                 </strong>
             </li>
-           
+
         </ul>
 
 
@@ -114,4 +56,51 @@
         </ul>
 
     </nav>
-</div>
+</div> #}
+<nav class="navbar md:navbar-expand bg-1">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDrawer"
+            aria-controls="navbarDrawer" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
+        <dialog class="drawer drawer-end" tabindex="-1" id="navbarDrawer" aria-labelledby="navbarDrawerLabel">
+            <div class="drawer-header">
+                <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+            </div>
+            <div class="drawer-body mb-2 md:mb-0">
+                <ul class="nav navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">
+                            Menu
+                        </button>
+                        <div class="menu">
+                            <a class="menu-item" href="#">Action</a>
+                            <a class="menu-item" href="#">Another action</a>
+                            <hr class="menu-divider">
+                            <a class="menu-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="hstack gap-2" role="search">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn-solid btn-icon theme-secondary" type="submit">
+                        <svg class="bi" width="16" height="16">
+                            <use href="#search" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </dialog>
+    </div>
+</nav>

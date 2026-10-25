@@ -59,29 +59,29 @@ module.exports = function(eleventyConfig) {
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
-  
+
   // Create collection organized by category folders
   eleventyConfig.addCollection("docsByCategory", function(collectionApi) {
     const docs = collectionApi.getFilteredByGlob("src/docs/**/*.md");
     const categories = {};
-    
+
     docs.forEach(doc => {
       // Extract category from folder path
       const parts = doc.inputPath.split('/');
       const docsIndex = parts.indexOf('docs');
       const category = parts[docsIndex + 1];
-      
+
       if (!categories[category]) {
         categories[category] = [];
       }
       categories[category].push(doc);
     });
-    
+
     // Sort docs within each category
     Object.keys(categories).forEach(cat => {
       categories[cat].sort((a, b) => a.fileSlug.localeCompare(b.fileSlug));
     });
-    
+
     return categories;
   });
 
@@ -121,10 +121,10 @@ File: `src/_includes/base.njk`
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
-  
+
   <!-- Shared CSS libraries go here -->
   <link rel="stylesheet" href="/css/global.css">
-  
+
   <!-- Page-specific CSS -->
   {% block styles %}{% endblock %}
 </head>
@@ -368,7 +368,7 @@ File: `src/js/sidebar.js`
 ```javascript
 document.addEventListener('DOMContentLoaded', () => {
   const currentPath = window.location.pathname;
-  
+
   // Toggle categories on click
   document.querySelectorAll('.category-toggle').forEach(button => {
     button.addEventListener('click', () => {
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category.classList.toggle('open');
     });
   });
-  
+
   // Auto-open category if current page is inside it
   document.querySelectorAll('.category-links a').forEach(link => {
     if (link.getAttribute('href') === currentPath) {
