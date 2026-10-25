@@ -3,14 +3,60 @@ layout: base.njk
 title: Home
 ---
 
-<div class="hero">
+<div class="p-10 mb-5 bg-3">
     <div class="container">
+        <h1 class="fs-6xl fw-light lh-1">Help thy Customer</h1>
+        <p class="fs-lg fw-light">
+            Look up a service or a common question while you’re on the call. Everything here is for agents, so confirm
+            anything marked as missing with your team lead before telling a customer.
+        </p>
 
-        <hgroup>
-            <h1>Elite Body Home Info Base</h1>
-            <p>Your project description here</p>
-        </hgroup>
-        <a href="#" role="button">Services</a>
-        <a href="#" role="button" class="secondary">Website</a>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Recipient’s username" aria-label="Recipient’s username"
+                aria-describedby="button-addon2">
+            <button class="btn-outline theme-secondary input-group-btn" type="button" id="button-addon2">Clear
+                Search</button>
+        </div>
+        <p class="hint">Press <kbd>/</kbd> to jump to search.</p>
+
+        <a class="btn-solid theme-primary btn-lg" href="#" role="button">Learn more</a>
+
     </div>
 </div>
+
+<main class="container">
+    <div class="grid grid-cols-2">
+
+        <div>
+            <section class="list" aria-labelledby="h-svc">
+                <h2 id="h-svc">Services</h2>
+                <p class="sub" id="count" role="status"></p>
+                <div id="svc"></div>
+            </section>
+            <section class="qa qa-block" aria-labelledby="h-qa">
+                <h2 id="h-qa">Questions customers ask</h2>
+                <p class="sub">The three most common so far.</p>
+                <div id="qa"></div>
+            </section>
+            <div class="empty" id="empty" hidden>No match for that search. Try a shorter word, or clear the search to
+                see everything.</div>
+        </div>
+
+        <aside>
+            <div class="card">
+                <h2>Clinic details</h2>
+                <address id="addr">Elite Body Home Polyclinic LLC<br>Awards Building, 2nd December Street, Jumeirah
+                    1<br>Block B, 117, 1st Floor, Al Hudaiba<br>Dubai, United Arab Emirates</address>
+                <div class="row">
+                    <button class="btn" type="button" id="copy">Copy address</button>
+                    <a class="btn"
+                        href="https://www.google.com/maps/search/?api=1&amp;query=Elite+Body+Home+Polyclinic+Jumeirah+Dubai"
+                        target="_blank" rel="noopener">Open in Google Maps</a>
+                </div>
+                <p id="copied" role="status"></p>
+                <p>Email: <a href="mailto:hello@example.com">hello@example.com</a> <span class="todo">CONFIRM</span></p>
+                <p>Phone and opening hours: <span class="todo">NEEDED</span></p>
+            </div>
+        </aside>
+    </div>
+</main>

@@ -25,9 +25,8 @@
 <body>
 
   {% include "components/navbar.njk" %}
-
   {% block content %}
-
+  {{ content | safe }}
   {% endblock %}
 
   <script src="/js/themeSwitch.js"></script>

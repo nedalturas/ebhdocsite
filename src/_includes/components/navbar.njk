@@ -6,9 +6,10 @@
 
 </head>
 
+
 <body>
-    <nav class="navbar lg:navbar-expand bg-1 fg-2 fixed-top">
-        <div class="container-fluid">
+    <nav class="navbar lg:navbar-expand bg-1 fg-2 sticky-top">
+        <div class="container">
 
             <a href="/" class="navbar-brand">
                 {{ site.name or "My Site" }}
@@ -34,8 +35,11 @@
                         </li>
                         {% endfor %}
 
+
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                            <div id="theme-toggle" class="theme-toggle nav-link" aria-label="Toggle theme">
+                                <span class="theme-icon">🌙</span>
+                            </div>
                         </li>
                     </ul>
                 </div>
