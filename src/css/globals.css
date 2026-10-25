@@ -11,6 +11,7 @@
     --blue: #0a6ea6;
     --link: #0a6ea6;
     --navy: #0c2233;
+    --navy-rgb: 12, 34, 51;
     --accent: #f0b43c;
     --focus: #0a6ea6;
     --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
@@ -29,6 +30,7 @@
         --line: #25394a;
         --link: #6bbdee;
         --navy: #06101a;
+        --navy-rgb: 6, 16, 26;
         --focus: #6bbdee;
     }
 }
@@ -41,15 +43,14 @@
     --line: #25394a;
     --link: #6bbdee;
     --navy: #06101a;
+    --navy-rgb: 6, 16, 26;
     --focus: #6bbdee;
 }
 
 body {
-    font-family:
-        system-ui,
-        -apple-system,
-        sans-serif;
-
+    font: 400 1.0625rem/1.55 var(--body);
+    color: var(--ink);
+    background-color: var(--bg);
     height: 100%;
 }
 
@@ -57,6 +58,9 @@ body {
     background-color: var(--surface);
     color: var(--ink);
     border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 1020;
 }
 
 .navbar .navbar-brand,

@@ -27,8 +27,21 @@
 }
 
 .home-page .top {
-    background: var(--navy);
+    background-color: var(--navy);
+    background-image:
+        linear-gradient(rgba(var(--navy-rgb), 0.78), rgba(var(--navy-rgb), 0.78)),
+        url("/images/header.jpg");
+    background-attachment: scroll, fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #eef5f9;
+}
+
+@media (max-width: 820px), (prefers-reduced-motion: reduce) {
+    .home-page .top {
+        background-attachment: scroll;
+    }
 }
 
 .home-page .bar {

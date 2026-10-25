@@ -17,13 +17,13 @@
     integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/globals.css">
-  <!-- Page-specific CSS -->
-  {% if page.url == "/" %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&display=swap"
     rel="stylesheet">
+  <!-- Page-specific CSS -->
+  {% if page.url == "/" %}
   <link rel="stylesheet" href="/css/home.css">
   {% endif %}
   {% block styles %}
@@ -31,7 +31,7 @@
   {% endblock %}
 </head>
 
-<body class="{% if page.url == '/' %}d-flex flex-column min-vh-100{% endif %}">
+<body class="d-flex flex-column min-vh-100">
 
   {% include "components/navbar.njk" %}
   {% block content %}
