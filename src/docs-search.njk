@@ -1,0 +1,15 @@
+---
+permalink: /docs-search.json
+eleventyExcludeFromCollections: true
+---
+[
+  {% for category, docs in collections.docsByCategory %}
+    {% for doc in docs %}
+      {
+        "title": {{ (doc.data.title or doc.fileSlug) | dump | safe }},
+        "category": {{ (category | replace("-", " ") | title) | dump | safe }},
+        "url": {{ doc.url | dump | safe }}
+      }{% if not loop.last or not loop.parent.loop.last %},{% endif %}
+    {% endfor %}
+  {% endfor %}
+]

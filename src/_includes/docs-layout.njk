@@ -7,33 +7,49 @@
 {% block content %}
 <div class="docs-page">
   <div class="docs-shell container py-4">
-    <div class="docs-mobile-bar d-lg-none mb-3">
-      <button class="docs-menu-toggle btn reference-btn" type="button" id="menu" aria-controls="docsSidebar" aria-expanded="false">
+    <!-- Mobile toolbar with menu button and search input -->
+    <div class="docs-mobile-bar mb-3">
+      <button class="docs-menu-toggle btn reference-btn" type="button" id="menu" aria-controls="docsSidebar" aria-expanded="false" aria-label="Open documentation navigation">
         <i class="bi bi-layout-sidebar-inset" aria-hidden="true"></i>
-        <span>Browse docs</span>
+        <span>Docs</span>
       </button>
-      <span class="docs-mobile-current text-truncate" id="docsCurrentTopic">Documentation</span>
+      <div class="docs-search-wrapper flex-grow-1">
+        <div class="docs-search-input-group">
+          <i class="bi bi-search docs-search-icon" aria-hidden="true"></i>
+          <input
+            type="search"
+            class="form-control docs-search-input"
+            id="docsSearchInput"
+            placeholder="Search docs..."
+            aria-label="Search documentation"
+            autocomplete="off"
+          />
+          <button type="button" class="docs-search-clear" id="docsSearchClear" aria-label="Clear search" hidden>&times;</button>
+        </div>
+        <div class="docs-search-results" id="docsSearchResults" hidden role="listbox"></div>
+      </div>
     </div>
 
     <div class="docs-backdrop" id="docsBackdrop" aria-hidden="true"></div>
 
     <div class="docs-layout">
       <aside class="sidebar" id="docsSidebar" aria-label="Documentation navigation">
-        <div class="sidebar-header d-lg-none">
+        <div class="sidebar-header">
           <span class="sidebar-title">Documentation</span>
           <button type="button" class="sidebar-close" id="sidebarClose" aria-label="Close documentation menu">
             &times;
           </button>
         </div>
-        <nav>
+
+        <nav id="docsNav">
           {% for category, docs in collections.docsByCategory %}
-          <details class="category" open>
+          <details class="category" open data-category="{{ category | replace('-', ' ') | lower }}">
             <summary class="category-toggle">
               <span>{{ category | replace("-", " ") | title }}</span>
             </summary>
             <ul class="category-links">
               {% for doc in docs %}
-              <li>
+              <li data-title="{{ (doc.data.title or doc.fileSlug) | lower }}">
                 <a href="{{ doc.url }}" class="category-link">{{ doc.data.title or doc.fileSlug }}</a>
               </li>
               {% endfor %}
@@ -42,6 +58,7 @@
           {% endfor %}
         </nav>
       </aside>
+
       <main class="content">
         {{ content | safe }}
       </main>
