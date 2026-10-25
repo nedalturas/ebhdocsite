@@ -1,12 +1,239 @@
-/* Global styling */
+.home-page {
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 1.0625rem/1.55 var(--body);
+}
 
+.home-page h1,
+.home-page h2,
+.home-page h3 {
+    margin: 0;
+    font-family: var(--display);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+}
 
+.home-page a {
+    color: var(--link);
+}
 
-@media (max-width: 960px) {
+.home-page :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+}
 
-    .menu {
-        display: none;
-        clear: left;
+.home-page .dark {
+    --focus: var(--accent);
+}
+
+.home-page .top {
+    background: var(--navy);
+    color: #eef5f9;
+}
+
+.home-page .bar {
+    min-height: 60px;
+}
+
+.home-page .brand {
+    color: #fff;
+    font: 700 1.15rem var(--display);
+    text-decoration: none;
+}
+
+.home-page .bar span {
+    color: #a9c3d3;
+    font-size: 0.95rem;
+}
+
+.home-page .top h1 {
+    margin-top: clamp(1.25rem, 3vw, 2.25rem) !important;
+    font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+}
+
+.home-page .top-description {
+    max-width: 56ch;
+    color: #c3d4df;
+}
+
+.home-page .search {
+    max-width: 680px;
+}
+
+.home-page .search .form-control {
+    --bs-control-border-radius: 0;
+}
+
+.home-page .search .form-control {
+    min-height: 56px;
+    border: 2px solid #9bb4c4;
+    background: #fff;
+    color: #0c2233;
+    font: 400 1.1rem var(--body);
+}
+
+.home-page .reference-btn {
+    min-height: 44px;
+    padding: 0.4rem 1rem;
+    border: 2px solid var(--blue);
+    background: transparent;
+    color: var(--link);
+    font: 600 0.95rem var(--body);
+    text-decoration: none;
+    --bs-btn-border-radius: 0;
+}
+
+.home-page .reference-btn:hover {
+    background: var(--blue);
+    color: #fff;
+}
+
+.home-page .search .reference-btn {
+    min-height: 56px;
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.home-page .search .reference-btn:hover {
+    background: var(--accent);
+    color: #0c2233;
+}
+
+.home-page .hint {
+    color: #a9c3d3;
+    font-size: 0.92rem;
+}
+
+.home-page kbd {
+    padding: 0.05rem 0.4rem;
+    border: 1px solid #6f8ea3;
+    border-radius: 4px;
+    color: inherit;
+    font: inherit;
+    font-size: 0.85rem;
+}
+
+.home-page .home-main h2 {
+    margin-bottom: 0.35rem;
+    font-size: 1.5rem;
+}
+
+.home-page .sub {
+    color: var(--muted);
+}
+
+.home-page #count {
+    font-weight: 600;
+}
+
+.home-page .accordion {
+    --bs-accordion-color: var(--ink);
+    --bs-accordion-bg: transparent;
+    --bs-accordion-border-color: var(--line);
+    --bs-accordion-border-width: 1px;
+    --bs-accordion-border-radius: 0;
+    --bs-accordion-btn-color: var(--ink);
+    --bs-accordion-btn-bg: transparent;
+    --bs-accordion-active-color: var(--ink);
+    --bs-accordion-active-bg: transparent;
+    --bs-accordion-padding-x: 0;
+    --bs-accordion-padding-y: 1rem;
+    --bs-accordion-gap: 0;
+}
+
+.home-page .accordion-item {
+    border-inline: 0;
+}
+
+.home-page .accordion-header {
+    min-height: 100px;
+    font-weight: 600;
+}
+
+.home-page .service-item>.accordion-header {
+    font: 600 1.25rem var(--display);
+}
+
+.home-page .accordion-item>.accordion-header::after {
+    flex-shrink: 0;
+    margin-inline-start: auto;
+    color: var(--link);
+    content: "+";
+    font: 600 1.5rem/1 var(--display);
+}
+
+.home-page .accordion-item[open]>.accordion-header::after {
+    content: "\2212";
+}
+
+.home-page .service-details {
+    margin-inline: 0;
+}
+
+.home-page .service-details dt {
+    font-weight: 600;
+}
+
+.home-page .service-details dd {
+    color: var(--muted);
+}
+
+.home-page .todo {
+    display: inline-block;
+    padding: 0.05rem 0.5rem;
+    border-radius: 4px;
+    background: var(--accent);
+    color: #0c2233;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.home-page .question-item p {
+    color: var(--muted);
+}
+
+.home-page .empty {
+    border: 2px dashed var(--line);
+    border-radius: 8px;
+    color: var(--muted);
+}
+
+.home-page .clinic-card {
+    position: sticky;
+    top: 1rem;
+    border-color: var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--ink);
+}
+
+.home-page .clinic-card .card-title {
+    font-size: 1.25rem;
+}
+
+.home-page .clinic-card address {
+    font-style: normal;
+}
+
+.home-page #copied {
+    min-height: 1.5em;
+    font-weight: 600;
+}
+
+.home-page .home-footer {
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
+}
 
+@media (max-width: 480px) {
+    .home-page .bar span {
+        display: none;
+    }
 }

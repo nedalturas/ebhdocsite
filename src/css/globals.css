@@ -1,7 +1,47 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --bg: #f3f8fa;
+    --surface: #fff;
+    --ink: #0c2233;
+    --muted: #4a6272;
+    --line: #cfdde5;
+    --blue: #0a6ea6;
+    --link: #0a6ea6;
+    --navy: #0c2233;
+    --accent: #f0b43c;
+    --focus: #0a6ea6;
+    --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+    --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #0b1620;
+        --surface: #12212d;
+        --ink: #e6eef3;
+        --muted: #9db3c1;
+        --line: #25394a;
+        --link: #6bbdee;
+        --navy: #06101a;
+        --focus: #6bbdee;
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg: #0b1620;
+    --surface: #12212d;
+    --ink: #e6eef3;
+    --muted: #9db3c1;
+    --line: #25394a;
+    --link: #6bbdee;
+    --navy: #06101a;
+    --focus: #6bbdee;
 }
 
 body {
@@ -10,15 +50,39 @@ body {
         -apple-system,
         sans-serif;
 
+    height: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-    margin: 0;
-    padding: 0;
+.navbar {
+    background-color: var(--surface);
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: var(--link);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus-visible,
+.navbar .nav-link.active {
+    color: var(--ink);
+}
+
+.navbar .drawer {
+    background-color: var(--surface);
+    color: var(--ink);
+}
+
+.navbar .drawer-title {
+    color: var(--ink);
+}
+
+.navbar #theme-toggle {
+    cursor: pointer;
+}
+
+.navbar #theme-toggle:hover {
+    background-color: var(--bg);
 }

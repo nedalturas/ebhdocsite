@@ -3,60 +3,165 @@ layout: base.njk
 title: Home
 ---
 
-<div class="p-10 mb-5 bg-3">
-    <div class="container">
-        <h1 class="fs-6xl fw-light lh-1">Help thy Customer</h1>
-        <p class="fs-lg fw-light">
-            Look up a service or a common question while you’re on the call. Everything here is for agents, so confirm
-            anything marked as missing with your team lead before telling a customer.
-        </p>
-
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Recipient’s username" aria-label="Recipient’s username"
-                aria-describedby="button-addon2">
-            <button class="btn-outline theme-secondary input-group-btn" type="button" id="button-addon2">Clear
-                Search</button>
+<div class="home-page d-flex flex-column flex-grow-1">
+    <header class="top dark py-10">
+        <div class="container">
+            <h1 class="mt-5">What does the customer need to know?</h1>
+            <p class="top-description mt-3 mb-4">Look up a service or a common question while you’re on the call.
+                Everything here is for agents, so confirm anything marked as missing with your team lead before telling
+                a customer.</p>
+            <form class="d-flex flex-column sm:flex-row gap-2 search" role="search" onsubmit="return false">
+                <input class="form-control" id="q" type="search"
+                    placeholder="Search services and questions, e.g. laser, price, licensed"
+                    aria-label="Search services and questions" autocomplete="off">
+                <button class="btn reference-btn" type="button" id="clear">Clear search</button>
+            </form>
+            <p class="hint mt-3 mb-0">Press <kbd>/</kbd> to jump to search.</p>
         </div>
-        <p class="hint">Press <kbd>/</kbd> to jump to search.</p>
+    </header>
 
-        <a class="btn-solid theme-primary btn-lg" href="#" role="button">Learn more</a>
+    <main class="home-main flex-grow-1">
+        <div class="container py-5">
+            <div class="row g-5">
+                <aside class="col-12 lg:col-4 order-first lg:order-last">
+                    <div class="card clinic-card">
+                        <div class="card-body">
+                            <h2 class="card-title">Clinic details</h2>
+                            <address id="addr" class="mb-4">Elite Body Home Polyclinic LLC<br>Awards Building, 2nd
+                                December Street, Jumeirah 1<br>Block B, 117, 1st Floor, Al Hudaiba<br>Dubai, United Arab
+                                Emirates</address>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn reference-btn" type="button" id="copy">Copy address</button>
+                                <a class="btn reference-btn"
+                                    href="https://www.google.com/maps/search/?api=1&amp;query=Elite+Body+Home+Polyclinic+Jumeirah+Dubai"
+                                    target="_blank" rel="noopener">Open in Google Maps</a>
+                            </div>
+                            <p id="copied" class="mt-3 mb-0" role="status"></p>
+                            <p class="mt-3 mb-0">Email: <a href="mailto:hello@example.com">hello@example.com</a> <span
+                                    class="todo">CONFIRM</span></p>
+                            <p class="mt-3 mb-0">Phone and opening hours: <span class="todo">NEEDED</span></p>
+                        </div>
+                    </div>
+                </aside>
 
-    </div>
+                <div class="col-12 lg:col-8">
+                    <section class="list" aria-labelledby="h-svc">
+                        <h2 id="h-svc">Services</h2>
+                        <p class="sub mb-4" id="count" role="status"></p>
+                        <div class="accordion" id="svc"></div>
+                    </section>
+                    <section class="qa qa-block mt-5" aria-labelledby="h-qa">
+                        <h2 id="h-qa">Questions customers ask</h2>
+                        <p class="sub mb-4">The three most common so far.</p>
+                        <div class="accordion" id="qa"></div>
+                    </section>
+                    <div class="empty mt-4 p-4" id="empty" hidden>No match for that search. Try a shorter word, or clear
+                        the search to see everything.</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="home-footer py-4 text-center">
+        <div class="container">© 2026 Elite Body Home Polyclinic LLC. Internal use only.</div>
+    </footer>
 </div>
 
-<main class="container">
-    <div class="grid grid-cols-2">
+<script>
+    const fields = ["Summary", "Who it’s for", "Price", "How to book", "Escalate to"];
+    const services = ["Weight management", "Skin care", "Home lab test", "Physiotherapy", "Home care", "IV drips", "Laser hair removal"];
+    const questions = ["How much does it cost?", "Are your professionals licensed?", "Which treatment is best for me?"];
+    const serviceBox = document.getElementById("svc");
+    const questionBox = document.getElementById("qa");
+    const search = document.getElementById("q");
 
-        <div>
-            <section class="list" aria-labelledby="h-svc">
-                <h2 id="h-svc">Services</h2>
-                <p class="sub" id="count" role="status"></p>
-                <div id="svc"></div>
-            </section>
-            <section class="qa qa-block" aria-labelledby="h-qa">
-                <h2 id="h-qa">Questions customers ask</h2>
-                <p class="sub">The three most common so far.</p>
-                <div id="qa"></div>
-            </section>
-            <div class="empty" id="empty" hidden>No match for that search. Try a shorter word, or clear the search to
-                see everything.</div>
-        </div>
+    function createAccordionItem(title, groupName, className, content) {
+        const item = document.createElement("details");
+        item.className = `accordion-item ${className}`;
+        item.name = groupName;
+        item.dataset.title = title.toLowerCase();
 
-        <aside>
-            <div class="card">
-                <h2>Clinic details</h2>
-                <address id="addr">Elite Body Home Polyclinic LLC<br>Awards Building, 2nd December Street, Jumeirah
-                    1<br>Block B, 117, 1st Floor, Al Hudaiba<br>Dubai, United Arab Emirates</address>
-                <div class="row">
-                    <button class="btn" type="button" id="copy">Copy address</button>
-                    <a class="btn"
-                        href="https://www.google.com/maps/search/?api=1&amp;query=Elite+Body+Home+Polyclinic+Jumeirah+Dubai"
-                        target="_blank" rel="noopener">Open in Google Maps</a>
-                </div>
-                <p id="copied" role="status"></p>
-                <p>Email: <a href="mailto:hello@example.com">hello@example.com</a> <span class="todo">CONFIRM</span></p>
-                <p>Phone and opening hours: <span class="todo">NEEDED</span></p>
-            </div>
-        </aside>
-    </div>
-</main>
+        const summary = document.createElement("summary");
+        summary.className = "accordion-header";
+        summary.textContent = title;
+        item.appendChild(summary);
+
+        const body = document.createElement("div");
+        body.className = "accordion-body";
+        body.innerHTML = content;
+        item.appendChild(body);
+        return item;
+    }
+
+    services.forEach((service) => {
+        const details = fields.map((field) =>
+            `<dt class="col-md-4">${field}</dt><dd class="col-md-8"><span class="todo">NOT DOCUMENTED</span></dd>`
+        ).join("");
+        serviceBox.appendChild(createAccordionItem(
+            service,
+            "services",
+            "service-item",
+            `<dl class="row g-2 service-details">${details}</dl>`
+        ));
+    });
+
+    questions.forEach((question) => {
+        questionBox.appendChild(createAccordionItem(
+            question,
+            "questions",
+            "question-item",
+            "<p class=\"mb-0\"><span class=\"todo\">ANSWER NEEDED</span> Not yet written. Ask your team lead.</p>"
+        ));
+    });
+
+    function filterContent() {
+        const query = search.value.trim().toLowerCase();
+        let visibleServices = 0;
+        let visibleQuestions = 0;
+
+        serviceBox.querySelectorAll(".accordion-item").forEach((item) => {
+            const visible = !query || item.dataset.title.includes(query);
+            item.hidden = !visible;
+            if (visible) visibleServices++;
+        });
+
+        questionBox.querySelectorAll(".accordion-item").forEach((item) => {
+            const visible = !query || item.dataset.title.includes(query);
+            item.hidden = !visible;
+            if (visible) visibleQuestions++;
+        });
+
+        document.getElementById("count").textContent =
+            `${visibleServices} of ${services.length} services shown`;
+        document.getElementById("h-qa").parentNode.hidden = !visibleQuestions;
+        document.getElementById("empty").hidden = Boolean(visibleServices || visibleQuestions);
+    }
+
+    search.addEventListener("input", filterContent);
+    document.getElementById("clear").addEventListener("click", () => {
+        search.value = "";
+        filterContent();
+        search.focus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "/" && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) {
+            event.preventDefault();
+            search.focus();
+            window.scrollTo(0, 0);
+        }
+    });
+
+    document.getElementById("copy").addEventListener("click", async () => {
+        const address = document.getElementById("addr").innerText.replace(/\n/g, ", ");
+        const status = document.getElementById("copied");
+        try {
+            await navigator.clipboard.writeText(address);
+            status.textContent = "Address copied.";
+        } catch {
+            status.textContent = "Copy didn’t work. Select the address and copy it by hand.";
+        }
+    });
+
+    filterContent();
+</script>
